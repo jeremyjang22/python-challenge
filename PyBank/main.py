@@ -63,10 +63,20 @@ with open(bankpath) as bankfile:
 
         prev_value = curr_value
 
-
-
 print("Months: " + str(months))
 print("Total: " + str(sum))
 print("Average change: " + str(sum_change/(months-1)))
 print("Greatest Increase in Profits: " + max_change_increase_date +  "($"+str(max_change_increase)+")")
 print("Greatest Decrease in Profits: " + max_change_decrease_date + "($"+str(max_change_decrease)+")")
+
+finalpath = os.path.join(".", "analysis", "financial_results.txt")
+
+file_writer = open(finalpath, "w+")
+
+file_writer.write("Months: " + str(months) + "\n")
+file_writer.write("Total: " + str(sum) + "\n")
+file_writer.write("Average change: " + str(sum_change/(months-1))+ "\n")
+file_writer.write("Greatest Increase in Profits: " + max_change_increase_date +  "($"+str(max_change_increase)+")\n")
+file_writer.write("Greatest Decrease in Profits: " + max_change_decrease_date + "($"+str(max_change_decrease)+")" + "\n")
+
+file_writer.close()

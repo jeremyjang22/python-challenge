@@ -45,12 +45,30 @@ with open(electionpath) as electionfile:
         else:
             database[name] += 1
 
-print("Election Results")
+# print("Election Results")
 
-print(f"Total Votes: {total_votes}")
+# print(f"Total Votes: {total_votes}")
+
+# for candidate in database:
+#         print(f"{candidate}: {database[candidate]}({database[candidate]/total_votes:.2f})")
+
+# print(f"Winner: {max(database, key = database.get)}")
+
+finalpath = os.path.join(".", "analysis", "polling_results.txt")
+
+file_writer = open(finalpath, "w+")
+
+file_writer.write("Election Results\n")
+
+file_writer.write(f"Total Votes: {total_votes}\n")
 
 for candidate in database:
-        print(f"{candidate}: {database[candidate]}({database[candidate]/total_votes:.2f})")
+        file_writer.write(f"{candidate}: {database[candidate]}({database[candidate]/total_votes:.2f})\n")
 
-print(f"Winner: {max(database, key = database.get)}")
+file_writer.write(f"Winner: {max(database, key = database.get)}\n")
+
+file_writer.close()
+
+
+
 
